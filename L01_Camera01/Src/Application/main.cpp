@@ -146,7 +146,7 @@ void Application::Draw()
 	// 陰影のあるオブジェクト(不透明な物体や2Dキャラ)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_StandardShader.BeginLit();
 	{	
-		//全ゲームオブジェクト描画
+		//全ゲームオブジェクト描画(範囲ベースfor)
 		for (std::shared_ptr<KdGameObject>obj : m_GameObjList)obj->DrawLit();
 	}
 	KdShaderManager::Instance().m_StandardShader.EndLit();
@@ -265,7 +265,7 @@ bool Application::Init(int w, int h)
 	m_GameObjList.push_back(_Hamu);
 
 	//===================================================================
-	// 地形初期化初期化
+	// 地形初期化
 	//===================================================================
 	std::shared_ptr<Terrain> _Terrain = std::make_shared<Terrain>();
 	_Terrain->Init();
